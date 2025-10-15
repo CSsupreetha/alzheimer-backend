@@ -48,12 +48,12 @@ def load_model_on_startup():
     global model, mri_filter
     try:
         # 1️⃣ Load Alzheimer model
-        model_path = "../attached_assets/gray_hybrid_model.keras"
+        model_path = "./gray_hybrid_model.keras"
         model = model_loader.load_model(model_path)
         logger.info("✅ Alzheimer model loaded successfully")
 
         # 2️⃣ Load MRI filter model (optional)
-        mri_filter_path = "../attached_assets/mri_filter_model.keras"
+        mri_filter_path = "./mri_filter_model.keras"
         if os.path.exists(mri_filter_path):
             mri_filter = tf.keras.models.load_model(mri_filter_path)
             logger.info("✅ MRI pre-filter model loaded successfully")
