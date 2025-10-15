@@ -1,0 +1,20 @@
+{
+  "tx_id": "local_20251009_110222_adee8afe",
+  "timestamp": "2025-10-09T11:02:22.081426",
+  "image_hash": "adee8afe54b62456d9dab3de54cb0dc5bdf21e7c0cdbd31efc8f3ab7a361a85b",
+  "prediction_data": {
+    "predicted_stage": "Impaired",
+    "predicted_stage_index": 0,
+    "confidence_score": 0.9999998807907104,
+    "all_probabilities": {
+      "Impaired": 0.9999998807907104,
+      "No Impairment": 6.984135580978545e-08,
+      "Very Mild Impairment": 1.0595798016765912e-08
+    },
+    "image_hash": "adee8afe54b62456d9dab3de54cb0dc5bdf21e7c0cdbd31efc8f3ab7a361a85b",
+    "timestamp": "2025-10-09T11:02:22.073713",
+    "model_version": "densenet_tinytransformer_gray_v2",
+    "storage_url": "file://C:\\Users\\supra\\Downloads\\alziemerdetector\\attached_assets\\local_storage\\images\\20251009_110222_adee8afe54b6.png"
+  },
+  "blockchain_type": "local_mock"
+}

@@ -1,0 +1,21 @@
+{
+  "tx_id": "local_20251002_161601_94ac82b8",
+  "timestamp": "2025-10-02T16:16:01.958425",
+  "image_hash": "94ac82b8cb98b45c7d77aa6be2238ef35d39175dfd4e88064e527fff28b00a35",
+  "prediction_data": {
+    "predicted_stage": "Mild Impairment",
+    "predicted_stage_index": 0,
+    "confidence_score": 0.9996850490570068,
+    "all_probabilities": {
+      "Mild Impairment": 0.9996850490570068,
+      "Moderate Impairment": 1.2809217575515675e-10,
+      "No Impairment": 1.0008981199405298e-08,
+      "Very Mild Impairment": 0.0003149575786665082
+    },
+    "image_hash": "94ac82b8cb98b45c7d77aa6be2238ef35d39175dfd4e88064e527fff28b00a35",
+    "timestamp": "2025-10-02T16:16:01.954209",
+    "model_version": "hybrid_cnn_transformer_v1",
+    "storage_url": "file://C:\\Users\\supra\\Downloads\\alziemerdetector\\attached_assets\\local_storage\\images\\20251002_161601_94ac82b8cb98.png"
+  },
+  "blockchain_type": "local_mock"
+}

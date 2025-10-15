@@ -1,0 +1,19 @@
+flask==3.1.2
+flask-cors==6.0.1
+tensorflow==2.20.0
+keras==3.11.3
+pillow==11.3.0
+numpy==2.3.3
+requests==2.32.5
+web3==7.13.0
+firebase-admin==7.1.0
+python-dotenv==1.1.1
+gunicorn==23.0.0
+
+# Optional: For enhanced image processing
+opencv-python==4.10.0.84
+scikit-image==0.24.0
+
+# Optional: For additional ML utilities
+pandas==2.2.3
+matplotlib==3.10.0
