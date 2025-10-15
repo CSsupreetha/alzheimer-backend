@@ -24,7 +24,7 @@ def test_model_loading():
     print("\n=== Testing Model Loading ===")
     try:
         model_loader = ModelLoader()
-        model_path = "../attached_assets/gray_hybrid_model.keras"
+        model_path = "./gray_hybrid_model.keras"
         if not os.path.exists(model_path):
             print(f"❌ Model file not found: {model_path}")
             return False
@@ -71,7 +71,7 @@ def test_model_inference():
     print("\n=== Testing Model Inference ===")
     try:
         model_loader = ModelLoader()
-        model_path = "../attached_assets/gray_hybrid_model.keras"
+        model_path = "./gray_hybrid_model.keras"
         model = model_loader.load_model(model_path)
 
         # 3-class setup from new model
@@ -110,7 +110,7 @@ def test_tflite_conversion():
     print("\n=== Testing TFLite Conversion ===")
     try:
         model_loader = ModelLoader()
-        model_path = "../attached_assets/gray_hybrid_model.keras"
+        model_path = "./gray_hybrid_model.keras"
         model_loader.load_model(model_path)
 
         tflite_path = model_loader.convert_to_tflite("test_model_mobile.tflite")
