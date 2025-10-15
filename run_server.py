@@ -19,7 +19,7 @@ def preload_model():
     global model
     try:
         # Updated model path for grayscale version
-        model_path = "../attached_assets/gray_hybrid_model.keras"
+        model_path = "./gray_hybrid_model.keras"
         model = model_loader.load_model(model_path)
         print("✅ Grayscale model preloaded successfully")
         return True
