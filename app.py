@@ -37,18 +37,9 @@ blockchain_manager = BlockchainManager()
 model = None
 mri_filter = None
 
-# ======================================================
-# ✅ Auto-load models when running on Render / Gunicorn
-# ======================================================
-if os.getenv("RENDER", "false").lower() == "true" or "gunicorn" in os.environ.get("SERVER_SOFTWARE", "").lower():
-    try:
-        logger.info("🚀 Detected Render or Gunicorn environment — loading models at startup...")
-        from time import sleep
-        sleep(2)  # optional slight delay
-        load_model_on_startup()  # <-- call directly, don't import
-        logger.info("✅ Models auto-loaded successfully on Render")
-    except Exception as e:
-        logger.error(f"❌ Auto model loading failed: {str(e)}")
+
+
+
 
 
 
@@ -79,7 +70,18 @@ def load_model_on_startup():
     except Exception as e:
         logger.error(f"❌ Model loading failed: {str(e)}")
         return False
-
+# ======================================================
+# ✅ Auto-load models when running on Render / Gunicorn
+# ======================================================
+if os.getenv("RENDER", "false").lower() == "true" or "gunicorn" in os.environ.get("SERVER_SOFTWARE", "").lower():
+    try:
+        logger.info("🚀 Detected Render or Gunicorn environment — loading models at startup...")
+        from time import sleep
+        sleep(2)  # optional slight delay
+        load_model_on_startup()  # <-- call directly, don't import
+        logger.info("✅ Models auto-loaded successfully on Render")
+    except Exception as e:
+        logger.error(f"❌ Auto model loading failed: {str(e)}")
 
 # ======================================================
 # Routes
