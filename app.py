@@ -37,6 +37,20 @@ blockchain_manager = BlockchainManager()
 model = None
 mri_filter = None
 
+# ======================================================
+# ✅ Auto-load models when running on Render / Gunicorn
+# ======================================================
+if os.getenv("RENDER", "false").lower() == "true" or "gunicorn" in os.environ.get("SERVER_SOFTWARE", "").lower():
+    try:
+        logger.info("🚀 Detected Render or Gunicorn environment — loading models at startup...")
+        from time import sleep
+        sleep(2)  # optional slight delay for environment readiness
+        from app import load_model_on_startup  # ensure function available
+        load_model_on_startup()
+        logger.info("✅ Models auto-loaded successfully on Render")
+    except Exception as e:
+        logger.error(f"❌ Auto model loading failed: {str(e)}")
+
 # Classes for Alzheimer model (3-class grayscale)
 ALZHEIMER_STAGES = ['Impaired', 'No Impairment', 'Very Mild Impairment']
 
