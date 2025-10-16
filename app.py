@@ -43,13 +43,14 @@ mri_filter = None
 if os.getenv("RENDER", "false").lower() == "true" or "gunicorn" in os.environ.get("SERVER_SOFTWARE", "").lower():
     try:
         logger.info("🚀 Detected Render or Gunicorn environment — loading models at startup...")
+        # Small delay optional (Render may still be initializing environment)
         from time import sleep
-        sleep(2)  # optional slight delay for environment readiness
-        from app import load_model_on_startup  # ensure function available
+        sleep(2)
         load_model_on_startup()
         logger.info("✅ Models auto-loaded successfully on Render")
     except Exception as e:
         logger.error(f"❌ Auto model loading failed: {str(e)}")
+
 
 # Classes for Alzheimer model (3-class grayscale)
 ALZHEIMER_STAGES = ['Impaired', 'No Impairment', 'Very Mild Impairment']
