@@ -18,17 +18,17 @@ def validate_image(image):
         logger.error("❌ No image provided for validation")
         return False
 
-    # Accept only grayscale or RGB
     if image.mode not in ["L", "RGB"]:
-        logger.warning(f"Unsupported image mode: {image.mode} — converting to grayscale (L)")
-        image = image.convert("L")
+    logger.warning(f"Unsupported image mode: {image.mode} — converting to grayscale (L)")
+    image = image.convert("L")
 
-    # Minimum resolution check
-    if image.width < 64 or image.height < 64:
-        logger.warning(f"Image too small: {image.size}")
-        return False
+# Minimum resolution check
+if image.width < 64 or image.height < 64:
+    logger.warning(f"Image too small: {image.size}")
+    return None
 
-    return True
+return image
+
 
 
 def preprocess_image(image, target_size=(224, 224)):
