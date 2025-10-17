@@ -37,12 +37,6 @@ blockchain_manager = BlockchainManager()
 model = None
 mri_filter = None
 
-
-
-
-
-
-
 # Classes for Alzheimer model (3-class grayscale)
 ALZHEIMER_STAGES = ['Impaired', 'No Impairment', 'Very Mild Impairment']
 
@@ -70,6 +64,8 @@ def load_model_on_startup():
     except Exception as e:
         logger.error(f"❌ Model loading failed: {str(e)}")
         return False
+
+
 # ======================================================
 # ✅ Auto-load models when running on Render / Gunicorn
 # ======================================================
@@ -82,6 +78,7 @@ if os.getenv("RENDER", "false").lower() == "true" or "gunicorn" in os.environ.ge
         logger.info("✅ Models auto-loaded successfully on Render")
     except Exception as e:
         logger.error(f"❌ Auto model loading failed: {str(e)}")
+
 
 # ======================================================
 # Routes
@@ -118,9 +115,11 @@ def predict_alzheimer_stage():
             image_bytes = base64.b64decode(image_data)
             image = Image.open(io.BytesIO(image_bytes)).convert("L")
 
-        # Validate basic image format
-        if not validate_image(image):
+        # ✅ Validate and normalize image
+        validated_image = validate_image(image)
+        if validated_image is None:
             return jsonify({'error': 'Invalid image format or size'}), 400
+        image = validated_image  # use validated image
 
         # Preprocess for both filters
         processed_image = preprocess_image(image)  # shape: (1,224,224,1)
