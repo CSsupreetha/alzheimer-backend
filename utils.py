@@ -9,26 +9,28 @@ from PIL import Image
 
 logger = logging.getLogger(__name__)
 
+
 def validate_image(image):
     """
     Validate image format and size.
     Accept grayscale (L) and RGB images, but prefer grayscale (L).
+    Returns the validated image (possibly converted to grayscale) or None if invalid.
     """
     if image is None:
         logger.error("❌ No image provided for validation")
-        return False
+        return None
 
+    # Accept only grayscale or RGB
     if image.mode not in ["L", "RGB"]:
-    logger.warning(f"Unsupported image mode: {image.mode} — converting to grayscale (L)")
-    image = image.convert("L")
+        logger.warning(f"Unsupported image mode: {image.mode} — converting to grayscale (L)")
+        image = image.convert("L")
 
-# Minimum resolution check
-if image.width < 64 or image.height < 64:
-    logger.warning(f"Image too small: {image.size}")
-    return None
+    # Minimum resolution check
+    if image.width < 64 or image.height < 64:
+        logger.warning(f"Image too small: {image.size}")
+        return None
 
-return image
-
+    return image
 
 
 def preprocess_image(image, target_size=(224, 224)):
